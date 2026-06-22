@@ -1,0 +1,16 @@
+{
+  "name": "ai-investment-research-agent",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "setup:backend": "npm run --prefix backend build",
+    "setup:frontend": "npm run --prefix frontend build",
+    "dev:backend": "npm run --prefix backend dev",
+    "dev:frontend": "npm run --prefix frontend dev",
+    "start": "npm run --prefix backend start"
+  }
+}
