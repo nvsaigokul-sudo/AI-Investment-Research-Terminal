@@ -4,7 +4,7 @@
   "description": "Backend service for AI Investment Research Agent",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node -e \"const fs = require('fs'); fs.mkdirSync('dist/db', { recursive: true }); fs.copyFileSync('src/db/schema.sql', 'dist/db/schema.sql');\"",
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
   },
