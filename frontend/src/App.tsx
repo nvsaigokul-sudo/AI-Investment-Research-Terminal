@@ -7,7 +7,10 @@ import { CompareModal } from './components/CompareModal';
 import { Watchlist } from './components/Watchlist';
 import type { Analysis, ComparisonResult, WatchlistItem } from './types';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_BASE = isLocal 
+  ? 'http://localhost:3001/api' 
+  : 'https://ai-investment-research-terminal.onrender.com/api';
 
 const App: React.FC = () => {
   // Application State

@@ -7,7 +7,15 @@ import apiRouter from './routes/api';
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://ai-investment-research-terminal-fro.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  methods: ['GET', 'POST', 'OPTIONS', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
