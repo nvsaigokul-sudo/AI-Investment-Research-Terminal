@@ -6,7 +6,7 @@ This document serves as the cover sheet and index for the finalized **AI Investm
 
 ## 💾 Submission Archive Details
 * **Archive Name:** `AI Investment Research Terminal.zip`
-* **Path:** `C:\Users\nvsai\Desktop\anti gravity\AI Investment Research Terminal.zip`
+* **Path:** `../AI Investment Research Terminal.zip` (relative to project root directory)
 * **Size:** **429.83 KB**
 * **Compression Date:** Friday, June 27, 2026
 
