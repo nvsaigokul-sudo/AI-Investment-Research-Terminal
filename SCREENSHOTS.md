@@ -31,15 +31,19 @@ This view shows a completed analysis and compiled equity research report:
   - Sidebar showing past recent runs.
 * **What it proves**: Successful end-to-end execution of the LangGraph pipeline, database persistence of completed reports, and markdown rendering.
 
+
+### 3. Captured Execution Visuals
+The following screenshots demonstrate these interfaces:
+
+#### Active Agent Stepper Progress
+![Agent Stepper](screenshots/img_1.png)
+
+#### Final Compiled Equity Memorandum
+![Final Memorandum](screenshots/img_2.png)
+
 ---
 
 ## 📋 Pre-Submission Screenshots Checklist
-
-![img_1.png](img_1.png)
-
-![img_2.png](img_2.png)
-
-
 
 ### 🖥️ Frontend & Dashboard UI
 - [ ] **Dashboard Home**: The initial landing screen showing the terminal welcome header, the company search bar input, quick example buttons, and an empty Watchlist widget.
