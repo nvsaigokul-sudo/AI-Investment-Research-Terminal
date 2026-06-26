@@ -39,7 +39,7 @@ The following screenshots demonstrate these interfaces:
 ![Agent Stepper](screenshots/img_1.png)
 
 #### Final Compiled Equity Memorandum
-![Final Memorandum](screenshots/img_2.png)
+![Final Memorandum](screenshots/img.png)
 
 ---
 
