@@ -4,6 +4,12 @@ An institutional-grade, multi-agent AI investment research terminal that analyze
 
 ---
 
+## 🌐 Deployed Live Gateways
+* **Frontend Dashboard (Vercel):** [https://ai-investment-research-terminal-fro.vercel.app/](https://ai-investment-research-terminal-fro.vercel.app/)
+* **Backend API Server (Render):** [https://ai-investment-research-terminal.onrender.com/](https://ai-investment-research-terminal.onrender.com/)
+
+---
+
 ## Architecture Overview
 
 ```
