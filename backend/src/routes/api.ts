@@ -252,4 +252,15 @@ router.get('/debug-db', async (req: Request, res: Response) => {
   }
 });
 
+router.get('/debug-db-by-id', async (req: Request, res: Response) => {
+  const { id } = req.query;
+  try {
+    const db = getDb();
+    const rows = await db.query("SELECT * FROM analyses WHERE id = $1", [id]);
+    return res.json({ id, rows, typeOfId: typeof id });
+  } catch (err: any) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;
