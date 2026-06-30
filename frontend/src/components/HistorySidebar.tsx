@@ -104,7 +104,7 @@ export const HistorySidebar: React.FC<HistorySidebarProps> = ({
                         e.stopPropagation();
                         onDelete(analysis.id);
                       }}
-                      className="p-1 rounded text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-all duration-200"
+                      className="p-1 rounded text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 opacity-60 md:opacity-0 group-hover:opacity-100 transition-all duration-200"
                       title="Delete report"
                     >
                       <Trash2 className="w-4 h-4" />

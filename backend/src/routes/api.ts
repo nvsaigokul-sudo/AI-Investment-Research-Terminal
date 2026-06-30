@@ -83,7 +83,15 @@ router.get('/history', async (req: Request, res: Response) => {
        FROM analyses 
        ORDER BY created_at DESC`
     );
-    return res.json(rows);
+    // Map database snake_case keys to camelCase required by the frontend
+    const formattedRows = rows.map(row => ({
+      id: row.id,
+      companyName: row.company_name,
+      recommendation: row.recommendation,
+      confidenceScore: row.confidence_score,
+      createdAt: row.created_at
+    }));
+    return res.json(formattedRows);
   } catch (error) {
     console.error('Error fetching history:', error);
     return res.status(500).json({ error: 'Failed to fetch history.' });
