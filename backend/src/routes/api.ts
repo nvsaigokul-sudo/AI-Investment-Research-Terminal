@@ -240,4 +240,16 @@ ${comp2.report_content}
   }
 });
 
+// TEMPORARY DIAGNOSTIC ROUTE
+router.get('/debug-db', async (req: Request, res: Response) => {
+  try {
+    const db = getDb();
+    const analyses = await db.query("SELECT * FROM analyses");
+    const reports = await db.query("SELECT id, analysis_id FROM reports");
+    return res.json({ analyses, reports });
+  } catch (err: any) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;
