@@ -240,46 +240,4 @@ ${comp2.report_content}
   }
 });
 
-// TEMPORARY DIAGNOSTIC ROUTE
-router.get('/debug-db', async (req: Request, res: Response) => {
-  try {
-    const db = getDb();
-    const analyses = await db.query("SELECT * FROM analyses");
-    const reports = await db.query("SELECT id, analysis_id FROM reports");
-    return res.json({ analyses, reports });
-  } catch (err: any) {
-    return res.status(500).json({ error: err.message });
-  }
-});
-
-router.get('/debug-db-by-id', async (req: Request, res: Response) => {
-  const { id } = req.query;
-  try {
-    const db = getDb();
-    const rows = await db.query("SELECT * FROM analyses WHERE id = $1", [id]);
-    return res.json({ id, rows, typeOfId: typeof id });
-  } catch (err: any) {
-    return res.status(500).json({ error: err.message });
-  }
-});
-
-router.get('/debug-compare-query', async (req: Request, res: Response) => {
-  const { id1, id2 } = req.query;
-  try {
-    const db = getDb();
-    const reports1 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = CAST($1 AS TEXT)`, [id1]);
-    const reports2 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = CAST($1 AS TEXT)`, [id2]);
-    return res.json({
-      id1,
-      id2,
-      len1: reports1.length,
-      len2: reports2.length,
-      reports1,
-      reports2
-    });
-  } catch (err: any) {
-    return res.status(500).json({ error: err.message });
-  }
-});
-
 export default router;
