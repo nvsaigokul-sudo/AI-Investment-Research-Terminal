@@ -194,8 +194,8 @@ router.post('/compare', async (req: Request, res: Response) => {
   try {
     const db = getDb();
 
-    const reports1 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = $1`, [id1]);
-    const reports2 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = $2`, [id2]);
+    const reports1 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = CAST($1 AS TEXT)`, [id1]);
+    const reports2 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = CAST($1 AS TEXT)`, [id2]);
 
     if (reports1.length === 0 || reports2.length === 0) {
       return res.status(404).json({ error: 'One or both of the reports were not found.' });
@@ -267,8 +267,8 @@ router.get('/debug-compare-query', async (req: Request, res: Response) => {
   const { id1, id2 } = req.query;
   try {
     const db = getDb();
-    const reports1 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = $1`, [id1]);
-    const reports2 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = $2`, [id2]);
+    const reports1 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = CAST($1 AS TEXT)`, [id1]);
+    const reports2 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = CAST($1 AS TEXT)`, [id2]);
     return res.json({
       id1,
       id2,
