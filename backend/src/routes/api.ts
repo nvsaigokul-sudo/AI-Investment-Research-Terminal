@@ -263,4 +263,23 @@ router.get('/debug-db-by-id', async (req: Request, res: Response) => {
   }
 });
 
+router.get('/debug-compare-query', async (req: Request, res: Response) => {
+  const { id1, id2 } = req.query;
+  try {
+    const db = getDb();
+    const reports1 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = $1`, [id1]);
+    const reports2 = await db.query(`SELECT report_content, company_name FROM reports r JOIN analyses a ON r.analysis_id = a.id WHERE a.id = $2`, [id2]);
+    return res.json({
+      id1,
+      id2,
+      len1: reports1.length,
+      len2: reports2.length,
+      reports1,
+      reports2
+    });
+  } catch (err: any) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;
